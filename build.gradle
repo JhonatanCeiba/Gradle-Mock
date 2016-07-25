@@ -1,0 +1,38 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.5
+version = '1.0'
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Quickstart',
+                   'Implementation-Version': version
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+    
+    // https://mvnrepository.com/artifact/org.mockito/mockito-all
+	compile 'org.mockito:mockito-all:1.10.19'
+	// https://mvnrepository.com/artifact/org.jvnet.mock-javamail/mock-javamail
+	compile group: 'org.jvnet.mock-javamail', name: 'mock-javamail', version: '1.9'
+	
+    
+}
+
+test {
+    systemProperties 'property': 'value'
+}
+
+uploadArchives {
+    repositories {
+       flatDir {
+           dirs 'repos'
+       }
+    }
+}
